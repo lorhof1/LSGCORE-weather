@@ -36,7 +36,7 @@ def LSGCORE_weather():
     display.draw_text(10, 10, 'Weather in ' + location + ':', font, color565(255, 255, 255), 0, False, 1)
     display.draw_text(10, 40, weather, big_font, color565(255, 255, 255), 0, False, 1)
     display.draw_text(10, 100, 'Location from IP adress | Hold to exit', font, color565(255, 255, 255), 0, False, 1)
-    if getInteraction == 'hold':
+    if getInteraction() == 'hold':
         home()
     else:
         LSGCORE_weather()
