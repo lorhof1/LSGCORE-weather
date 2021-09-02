@@ -19,28 +19,19 @@ def lsg_weather_http_get(url):
     return Download.split('\n', 12)[-1]
 
 def LSGCORE_weather():
-    while True:
-        try:
-            import socket
-        except:
-            print()
-
-        ip = lsg_weather_http_get('http://api.ipify.org/')
-        location_data = lsg_weather_http_get('http://ip-api.com/line/' + ip)
-        location = location_data.split('\n')[2]
-
-        weather_report = (lsg_weather_http_get('http://wttr.in/' + location))
-        weather = weather_report.split('\n')[-6].split(' ')[-1]
-
-        drawBG()
-        infoBar()
-        display.draw_text(10, 10, 'Weather in ' + location + ':', font, color565(255, 255, 255), 0, False, 1)
-        display.draw_text(10, 40, weather, big_font, color565(255, 255, 255), 0, False, 1)
-        display.draw_text(10, 100, 'Location from IP adress | Hold to exit', font, color565(255, 255, 255), 0, False, 1)
-        if getInteraction() == 'hold':
-            home()
-        else:
-            LSGCORE_weather()
+    ip = lsg_weather_http_get('http://api.ipify.org/')
+    location_data = lsg_weather_http_get('http://ip-api.com/line/' + ip)
+    location = location_data.split('\n')[2]
+    weather = lsg_weather_http_get('http://api.openweathermap.org/data/2.5/weather?q=' + location + '&appid=24b447d1674002e3127f08885075eeb9').split('"')[17]
+    drawBG()
+    infoBar()
+    display.draw_text(1, 10, 'Weather in', font, color565(255, 255, 255), 0, False, 1)
+    display.draw_text(1, 20, location, font, color565(255, 255, 255), 0, False, 1)
+    display.draw_text(1, 40, weather, big_font, color565(255, 255, 255), 0, False, 1)
+    display.draw_text(1, 100, 'Location from IP', font, color565(255, 255, 255), 0, False, 1)
+    display.draw_text(1, 110, 'Tap to exit', font, color565(255, 255, 255), 0, False, 1)   
+    getInteraction()
+    apps(1)
 appNames.append('Weather')
 appIDs.append(LSGCORE_weather)
 #end of app Weather
