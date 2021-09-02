@@ -43,3 +43,4 @@ def LSGCORE_weather():
 appNames.append('Weather')
 appIDs.append(LSGCORE_weather)
 #end of app Weather
+
