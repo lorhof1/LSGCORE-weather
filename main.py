@@ -19,12 +19,12 @@ def lsg_weather_http_get(url):
     return Download.split('\n', 12)[-1]
 
 def LSGCORE_weather():
-    try:
-        ip = lsg_weather_http_get('http://api.ipify.org/')
-    except:
+    #try:
+    #    ip = lsg_weather_http_get('http://api.ipify.org/')
+    #except:
         print('ipify failed')
     try:
-        location_data = lsg_weather_http_get('http://ip-api.com/line/' + ip)
+        location_data = lsg_weather_http_get('http://ip-api.com/line/')
     except:
         print('ipapi failed')
     location = location_data.split('\n')[2]
