@@ -42,7 +42,10 @@ def LSGCORE_weather():
         display.draw_text(1, 10, 'Weather', font, color565(255, 255, 255), 0, False, 1)
     except:
         print('weather failed')
-    #display.draw_text(1, 20, location, font, color565(255, 255, 255), 0, False, 1)
+    try:
+        display.draw_text(1, 20, location, font, color565(255, 255, 255), 0, False, 1)
+    except:
+        print('location failed')
     try:
         display.draw_text(1, 40, weather, big_font, color565(255, 255, 255), 0, False, 1)
     except:
