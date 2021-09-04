@@ -22,7 +22,7 @@ def LSGCORE_weather():
     #try:
     #    ip = lsg_weather_http_get('http://api.ipify.org/')
     #except:
-        print('ipify failed')
+    #    print('ipify failed')
     try:
         location_data = lsg_weather_http_get('http://ip-api.com/line/')
     except:
