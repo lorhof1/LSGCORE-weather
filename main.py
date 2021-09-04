@@ -19,10 +19,19 @@ def lsg_weather_http_get(url):
     return Download.split('\n', 12)[-1]
 
 def LSGCORE_weather():
-    ip = lsg_weather_http_get('http://api.ipify.org/')
-    location_data = lsg_weather_http_get('http://ip-api.com/line/' + ip)
+    try:
+        ip = lsg_weather_http_get('http://api.ipify.org/')
+    except:
+        print('ipify failed')
+    try:
+        location_data = lsg_weather_http_get('http://ip-api.com/line/' + ip)
+    except:
+        print('ipapi failed')
     location = location_data.split('\n')[2]
-    weather = lsg_weather_http_get('http://api.openweathermap.org/data/2.5/weather?q=' + location + '&appid=24b447d1674002e3127f08885075eeb9').split('"')[17]
+    try:
+        weather = lsg_weather_http_get('http://api.openweathermap.org/data/2.5/weather?q=' + location + '&appid=24b447d1674002e3127f08885075eeb9').split('"')[17]
+    except:
+        print('owm api failed')
     drawBG()
     infoBar()
     try:
