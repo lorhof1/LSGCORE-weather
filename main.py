@@ -1,5 +1,9 @@
 #beginning of app Weather
 def lsg_weather_http_get(url):
+    try:
+        import socket
+    except:
+        print('socket already imported')
     Download = ''
     _, _, host, path = url.split('/', 3)
     addr = socket.getaddrinfo(host, 80)[0][-1]
